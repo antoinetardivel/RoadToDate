@@ -5,17 +5,18 @@ export interface Props {
   navigation: any;
 }
 
-export default function HomeScreen({navigation}: Props) {
+export default function ScoresScreen({navigation}: Props) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        title="Home"
+        onPress={() => navigation.navigate('Scores')}
+      />
       <Button
         title="Game"
         onPress={() => navigation.navigate('Game')}
       />
-      <Button
-        title="Scores"
-        onPress={() => navigation.navigate('Scores')}
-      />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 }
