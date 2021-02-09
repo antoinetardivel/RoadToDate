@@ -2,12 +2,19 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeScreen from './screens/HomeScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import NotificationsScreen from './screens/NotificationsScreen';
-import SettingsScreen from './screens/SettingsScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
+import NotificationsScreen from './src/screens/NotificationsScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
 
 const Stack = createStackNavigator();
+
+// interface Props {
+//     children?: string | undefined,
+//     onPress?: () => void,
+//     color?: string,
+//     autre?: any,
+// }
 
 function MyStack() {
   return (

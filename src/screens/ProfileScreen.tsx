@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { Button, View } from 'react-native';
 
-export default function ProfileScreen({ navigation }) {
+export interface Props {
+  navigation: any;
+}
+
+export default function ProfileScreen({navigation}: Props) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Button
