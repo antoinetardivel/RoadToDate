@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { Button, View } from 'react-native';
+import * as React from 'react'
+import { Button, View } from 'react-native'
 
 export interface Props {
   navigation: any;
 }
 
-export default function GameScreen({navigation}: Props) {
+const GameScreen = ({navigation}: Props) => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button
@@ -18,5 +18,6 @@ export default function GameScreen({navigation}: Props) {
       />
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
-  );
+  )
 }
+export default GameScreen

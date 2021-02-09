@@ -18,7 +18,7 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Game" component={GameScreen} />
       <Stack.Screen name="Scores" component={ScoresScreen} />
@@ -29,7 +29,7 @@ function MyStack() {
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <MyStack />
     </NavigationContainer>
   );
