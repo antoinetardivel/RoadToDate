@@ -1,23 +1,27 @@
-import * as React from 'react'
-import { Button, View } from 'react-native'
+import React, {useState} from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { Accelerometer } from 'expo-sensors';
 
-export interface Props {
-  navigation: any;
-}
+export default function GameScreen() {
 
-const GameScreen = ({navigation}: Props) => {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        title="Home"
-        onPress={() => navigation.navigate('Home')}
-      />
-      <Button
-        title="Scores"
-        onPress={() => navigation.navigate('Scores')}
-      />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+    const [data, setData] = useState({
+        x: 0,
+        y: 0,
+        z: 0,
+        });
+
+    Accelerometer.setUpdateInterval(100);
+    Accelerometer.addListener(accelerometerData => {
+        setData(accelerometerData);
+      })
+
+    const { x, y, z } = data;
+
+    console.log(Math.round(y))
+
+    return (
+    <View>
+        <Text>{y} </Text>
     </View>
-  )
+    );
 }
-export default GameScreen
