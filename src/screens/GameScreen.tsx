@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, Dimensions  } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
-export default function GameScreen() {
+const GameScreen = () => {
   const [data, setData] = useState({
       x: 0,
       y: 0,
@@ -19,6 +19,8 @@ export default function GameScreen() {
   let windowHeight = Dimensions.get('window').height
   const [PosPlayerY, setPosPlayerY] = useState((windowWidth/2)-25)
   console.log(Math.round(y))
+
+
   let PosTemp = 0
   useEffect(()=>{
     PosTemp = (windowWidth/2) + ((windowWidth*( parseFloat(y).toFixed( 2 )) )-25)
@@ -31,8 +33,6 @@ export default function GameScreen() {
     }
     setPosPlayerY(PosTemp)
   },[y])
-  
-
 
   return (
   <View style={styles.Container}>
@@ -58,3 +58,5 @@ const styles = StyleSheet.create({
       bottom: 30,
   }
 })
+
+export default GameScreen
