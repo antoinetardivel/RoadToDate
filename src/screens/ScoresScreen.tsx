@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Text, Button, View, StyleSheet } from "react-native";
+import BackgroundImage from "../components/BackgroundImage";
 import MainMenuButton from "../components/MainMenuButton";
 import Settingsbutton from "../components/SettingsButton";
 
@@ -10,6 +11,8 @@ export interface Props {
 const ScoresScreen = ({ navigation }: Props) => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      
+      <BackgroundImage />
       <MainMenuButton />
       <Settingsbutton />
       <Button

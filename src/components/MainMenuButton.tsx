@@ -9,18 +9,8 @@ const MainMenuButton = () => {
 
 const styles = StyleSheet.create({
   menubox: {
-    position: "absolute",
-    left: 20,
-    top: 20,
-    height: 55,
-    width: 55,
-    borderRadius: 14,
-    borderStyle: "solid",
-    borderColor: "#682B16",
-    borderWidth: 2,
-    backgroundColor: "#8F2F30",
-  },
-  menutext: {
+    alignItems: "center",
+    justifyContent: "center",
     position: "absolute",
     left: 20,
     top: 20,
@@ -31,6 +21,11 @@ const styles = StyleSheet.create({
     borderColor: "#682B16",
     borderWidth: 2,
     backgroundColor: "#8F2F30",
+  },
+  menutext: {
+    color: "#FEE6C0",
+    fontWeight: "bold",
+    fontSize: 15,
   },
 });
 
