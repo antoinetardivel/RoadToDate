@@ -1,10 +1,19 @@
 import * as React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, TouchableHighlight } from "react-native";
 
-const MainMenuButton = () => {
-  return <View style={styles.menubox}>
-    <Text style={styles.menutext}>MENU PRINCIPAL</Text>
-  </View>;
+export interface Props {
+  navigation: any;
+}
+
+const MainMenuButton = ({ navigation }: Props) => {
+  return (
+    <TouchableHighlight
+      onPress={() => navigation.navigate("Home")}
+      style={styles.menubox}
+    >
+      <Text style={styles.menutext}>MENU PRINCIPAL</Text>
+    </TouchableHighlight>
+  );
 };
 
 const styles = StyleSheet.create({

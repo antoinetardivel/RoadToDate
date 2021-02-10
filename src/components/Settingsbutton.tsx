@@ -1,8 +1,17 @@
 import * as React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, TouchableHighlight } from "react-native";
 
-const SettingsButton = () => {
-  return <View style={styles.settingsbox}></View>;
+export interface Props {
+  navigation: any;
+}
+
+const SettingsButton = ({ navigation }: Props) => {
+  return (
+    <TouchableHighlight
+      onPress={() => navigation.navigate("Settings")}
+      style={styles.settingsbox}
+    ></TouchableHighlight>
+  );
 };
 
 const styles = StyleSheet.create({
