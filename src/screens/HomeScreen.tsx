@@ -1,6 +1,7 @@
 import * as React from "react";
-import { View, Text, StyleSheet, TouchableHighlight, Image } from "react-native";
-import BackgroundImage from "../components/BackgroundImage";
+import { View, Text, StyleSheet, TouchableHighlight, Image, ImageBackground } from "react-native";
+// import BackgroundImage from "../components/BackgroundImage";
+const imageBG = require("../img/backgroundOpti.jpg");
 
 export interface Props {
   navigation: any;
@@ -8,8 +9,9 @@ export interface Props {
 
 export default function HomeScreen({ navigation }: Props) {
   return (
+    <ImageBackground source={imageBG} blurRadius={2} style={styles.BackgroundImage}>
     <View style={styles.container}>
-      <BackgroundImage />
+      {/* <BackgroundImage /> */}
       <Image style={styles.title} source={require('../img/titre.png')}/>
       <View style={styles.contentCenter}>
         <TouchableHighlight onPress={() => navigation.navigate("Game")}>
@@ -24,6 +26,7 @@ export default function HomeScreen({ navigation }: Props) {
         </TouchableHighlight>
       </View>
     </View>
+    </ImageBackground>
   );
 }
 
@@ -31,7 +34,9 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    flex: 1,
+    width: '100%',
+    height: "100%",
+    position: "absolute"
   },
   title: {
     width: '50%',
@@ -63,4 +68,12 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontWeight: 'bold',
   },
+  BackgroundImage:{
+    resizeMode: "cover",
+    alignItems: "center",
+    position: "absolute",
+    width:"100%",
+    height:"100%",
+    // filter: "blur(10px)",
+  }
 });

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { ImageBackground, StyleSheet } from 'react-native'
+import { useFonts,  } from 'expo-font';
 
 import HomeScreen from './src/screens/HomeScreen';
 import ScoresScreen from './src/screens/ScoresScreen';
@@ -17,6 +19,10 @@ const Stack = createStackNavigator();
 // }
 
 function MyStack() {
+  const [loaded, error] = useFonts({
+    GothamMedium: require('./src/fonts/Gotham-Medium.ttf'),
+    GothamBold: require('./src/fonts/Gotham-Bold.ttf'),
+   });
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={HomeScreen} />
@@ -30,7 +36,11 @@ function MyStack() {
 export default function App() {
   return (
     <NavigationContainer >
-      <MyStack />
+        <MyStack />
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+
+});

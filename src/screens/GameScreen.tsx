@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View, Dimensions  } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ImageBackground  } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
+
+const imageBG = require("../img/backgroundOpti.jpg");
 
 import Waste from '../components/Waste'
 
@@ -67,23 +69,25 @@ const GameScreen = () => {
   
 
   return (
-  <View style={styles.Container}>
-    <View style={[styles.Perso, {left: PosPlayerY}]}></View>
-    <Text>{ parseFloat(y).toFixed( 2 )} </Text>
-    {Wastes.map((WastePos, index) => {
-        return <Waste key={index} PositionX={WastePos} />
-    })}
-    <Text>-- {windowWidth} </Text>
-    <Text>-- {windowHeight} </Text>
-  </View>
+    <ImageBackground source={imageBG} style={styles.BackgroundImage}>
+      <View style={styles.Container}>
+        <View style={[styles.Perso, {left: PosPlayerY}]}></View>
+        <Text>{ parseFloat(y).toFixed( 2 )} </Text>
+        {Wastes.map((WastePos, index) => {
+            return <Waste key={index} PositionX={WastePos} />
+        })}
+        <Text>-- {windowWidth} </Text>
+        <Text>-- {windowHeight} </Text>
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   Container: {
-    backgroundColor: 'green',
     flex: 1,
     height:'100%',
+    width:"100%",
   },
   Perso: {
       position: 'absolute',
@@ -92,6 +96,13 @@ const styles = StyleSheet.create({
       backgroundColor: 'red',
       bottom: 30,
   },
+  BackgroundImage:{
+    resizeMode: "cover",
+    alignItems: "center",
+    position: "absolute",
+    width:"100%",
+    height:"100%",
+  }
 })
 
 export default GameScreen

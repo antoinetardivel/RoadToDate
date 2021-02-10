@@ -1,8 +1,8 @@
 import * as React from "react";
 import { View, StyleSheet, Image } from "react-native";
 
-import imageBG from "../img/backgroundOpti.jpg";
-// const imageBG = require('../img/backgroundOpti.jpg')
+// import imageBG from "../img/backgroundOpti.jpg";
+const imageBG = require('../img/backgroundOpti.jpg')
 
 const BackgroundImage = () => {
   return (
@@ -10,7 +10,7 @@ const BackgroundImage = () => {
       <Image
         source={imageBG}
         style={styles.image}
-        blurRadius={4}
+        blurRadius={1}
       ></Image>
     </View>
   );
