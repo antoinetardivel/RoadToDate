@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, Button, View, StyleSheet } from "react-native";
 import BackgroundImage from "../components/BackgroundImage";
 import MainMenuButton from "../components/MainMenuButton";
-import Settingsbutton from "../components/SettingsButton";
+import SettingsButton from "../components/SettingsButton";
 
 export interface Props {
   navigation: any;
@@ -11,13 +11,12 @@ export interface Props {
 const ScoresScreen = ({ navigation }: Props) => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      
       <BackgroundImage />
-      <MainMenuButton />
-      <Settingsbutton />
+      <MainMenuButton navigation={navigation} />
+      <SettingsButton navigation={navigation} />
       <Button
         title="MENU PRINCIPAL"
-        onPress={() => navigation.navigate("Scores")}
+        onPress={() => navigation.navigate("Home")}
       />
       <Button title="OPTIONS" onPress={() => navigation.navigate("Settings")} />
       <View style={styles.scorebox}>
