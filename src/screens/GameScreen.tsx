@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, Dimensions  } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
-const GameScreen = () => {
+import Waste from '../components/Waste'
 
+const GameScreen = () => {
 
   const [data, setData] = useState({
       x: 0,
@@ -49,38 +50,29 @@ const GameScreen = () => {
     }
   },[])
   // @ts-ignore
-  const SpawnWaste = (i, WastePos) => {
-    console.log(WastePos)
-    return <View key={i} style={[styles.Waste, {left: WastePos}]}><Text>coucou</Text></View>
+  const Wastes = [10,50,100,150,200,250,300];
+
+  const spawn = () =>{
+    let max = windowWidth - 15
+    let min = 0
+    let WastePos = Math.floor(Math.random() * (max - min + 1) + min);
+    return(
+      <Waste PositionX={WastePos} />
+    )
   }
+  // let max = windowWidth - 15
+  //   let min = 0
+  //   let WastePos = Math.floor(Math.random() * (max - min + 1) + min);
+
+  
 
   return (
   <View style={styles.Container}>
     <View style={[styles.Perso, {left: PosPlayerY}]}></View>
     <Text>{ parseFloat(y).toFixed( 2 )} </Text>
-    {
-      useEffect( () => {
-        if(GameStart && !VagueStart && VagueEnd){
-          setVagueNum(VagueNum + 1)
-          console.log("Vague + 1 = " + VagueNum)
-          setVagueStart(true)
-          let WastePos = 0
-          let max = windowWidth - 15
-          let min = 0
-          for(let i = 0; i < (4 * VagueNum); i++){
-            console.log("Spawn Waste")
-            WastePos = Math.floor(Math.random() * (max - min + 1) + min);
-            console.log(WastePos)
-            SpawnWaste(i, WastePos)
-            // setTimeout(() => {
-            //   WastePos = Math.floor(Math.random() * (max - min + 1) + min);
-            //   <View key={i} style={[styles.Waste, {left: WastePos}]}></View>
-            //   console.log("Spawn Waste")
-            // }, 700*VagueNum)
-          }
-        }
-      },[GameStart])
-    }
+    {Wastes.map((WastePos, index) => {
+        return <Waste key={index} PositionX={WastePos} />
+    })}
     <Text>-- {windowWidth} </Text>
     <Text>-- {windowHeight} </Text>
   </View>
@@ -100,13 +92,6 @@ const styles = StyleSheet.create({
       backgroundColor: 'red',
       bottom: 30,
   },
-  Waste: {
-    position: 'absolute',
-    backgroundColor: 'blue',
-    width: 15,
-    height: 15,
-    top: 10,
-  }
 })
 
 export default GameScreen

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, Button, Text, StyleSheet, SafeAreaView } from "react-native";
-import BackgroundImage from "../components/BackgroundImage";
+import BackgroundImage from "../components/backgroundImage";
 
 export interface Props {
   navigation: any;
