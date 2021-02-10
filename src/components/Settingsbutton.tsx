@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, StyleSheet } from "react-native";
 
-const Settingsbutton = () => {
+const SettingsButton = () => {
   return <View style={styles.settingsbox}></View>;
 };
 
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Settingsbutton;
+export default SettingsButton;
