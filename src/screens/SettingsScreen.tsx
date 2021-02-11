@@ -1,8 +1,14 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Image, ImageBackground, Button } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  Button,
+  TouchableHighlight,
+} from "react-native";
 import MainMenuButton from "../components/MainMenuButton";
-import PlayButton from "../components/PlayButton";
-import SettingsButton from "../components/SettingsButton";
 const imageBG = require("../img/backgroundOpti.jpg");
 
 export interface Props {
@@ -11,19 +17,43 @@ export interface Props {
 
 const SettingsScreen = ({ navigation }: Props) => {
   return (
-    <ImageBackground source={imageBG} blurRadius={2} style={styles.BackgroundImage}>
+    <ImageBackground
+      source={imageBG}
+      blurRadius={2}
+      style={styles.BackgroundImage}
+    >
       <View style={styles.container}>
         <MainMenuButton navigation={navigation} />
-        <SettingsButton navigation={navigation} />
-        <View style={[styles.container, { width: "80%" }]}>
-          <Image style={styles.title} source={require("../img/results.png")} />
-          <View>
-            <View style={styles.scorebox}>
-              <Text style={styles.score}>350 pts</Text>
-              <Text style={styles.bestscore}>Meilleur score : 354 pts</Text>
+        <TouchableHighlight
+          onPress={() => navigation.goBack()}
+          style={styles.closesettingsbox}
+        >
+          <Image
+            source={require("../img/cross.png")}
+            style={styles.closesettingsimage}
+          ></Image>
+        </TouchableHighlight>
+        <View style={[styles.box]}>
+          <View style={{ flex: 1, flexDirection: "row" }}>
+            <View>
+              <Text style={styles.titres}>Son :</Text>
             </View>
-            <PlayButton navigation={navigation} />
-            <Button title="Go back" onPress={() => navigation.goBack()} />
+            <View>
+              <Text style={styles.titres}>Commandes :</Text>
+              <View style={{ flex: 1, flexDirection: "row" }}>
+                <Image source={require("../img/commandes.png")} />
+                <Text style={styles.textes}>
+                  Inclinez le téléphone pour vous déplacer.
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View>
+            <Text style={styles.titres}>Crédits :</Text>
+            <Text style={styles.textes}>
+              Application réalisée par Antoine TARDIVEL, Olivier TECHER et Hugo
+              BLANCHARD. Merci à JP pour son aide.
+            </Text>
           </View>
         </View>
       </View>
@@ -36,45 +66,58 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    width:'100%'
+    width: "100%",
   },
-  scorebox: {
+  closesettingsbox: {
+    position: "absolute",
+    right: 20,
+    top: 20,
+    height: 55,
+    width: 55,
+    borderRadius: 14,
+    borderStyle: "solid",
+    borderColor: "#682B16",
+    borderWidth: 2,
+    backgroundColor: "#8F2F30",
+  },
+  closesettingsimage: {
+    width: 29.23,
+    height: 29.23,
+    top: 11.5,
+    left: 11,
+  },
+  box: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
     paddingHorizontal: 30,
     borderRadius: 14,
+    width: 690,
+    height: 280,
+    top: 30,
     borderStyle: "solid",
     borderColor: "#8F2F30",
     borderWidth: 2,
     backgroundColor: "#F2D7AA",
     marginBottom: 20,
   },
-  title: {
+  BackgroundImage: {
+    resizeMode: "cover",
     alignItems: "center",
-    justifyContent: "center",
+    position: "absolute",
     width: "100%",
-    height: "30%",
-    resizeMode: "contain",
-    marginBottom: 20,
+    height: "100%",
   },
-  score: {
+  titres: {
     color: "#8F2F30",
     fontWeight: "bold",
     fontSize: 24,
   },
-  bestscore: {
+  textes: {
     color: "#8F2F30",
     fontSize: 18,
   },
-  BackgroundImage:{
-    resizeMode: "cover",
-    alignItems: "center",
-    position: "absolute",
-    width:"100%",
-    height:"100%",
-  }
 });
 
 export default SettingsScreen;

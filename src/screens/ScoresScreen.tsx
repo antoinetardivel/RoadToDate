@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, View, StyleSheet, Image, ImageBackground } from "react-native";
 import MainMenuButton from "../components/MainMenuButton";
-import PlayButton from "../components/PlayButton";
+import PlayButton from "../components/Button";
 import SettingsButton from "../components/SettingsButton";
 const imageBG = require("../img/backgroundOpti.jpg");
 
@@ -22,7 +22,7 @@ const ScoresScreen = ({ navigation }: Props) => {
               <Text style={styles.score}>350 pts</Text>
               <Text style={styles.bestscore}>Meilleur score : 354 pts</Text>
             </View>
-            <PlayButton navigation={navigation} />
+            <PlayButton navigation={navigation}  texte={"Rejouer"} />
           </View>
         </View>
       </View>
