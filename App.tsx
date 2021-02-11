@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ImageBackground, StyleSheet } from 'react-native'
+import { ImageBackground, StyleSheet, Text } from 'react-native'
 import { useFonts,  } from 'expo-font';
 
 import HomeScreen from './src/screens/HomeScreen';
 import ScoresScreen from './src/screens/ScoresScreen';
 import GameScreen from './src/screens/GameScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import MusicProvider from './src/components/MusicProvider';
 
 const Stack = createStackNavigator();
 
@@ -35,9 +36,11 @@ function MyStack() {
 
 export default function App() {
   return (
-    <NavigationContainer >
-        <MyStack />
-    </NavigationContainer>
+    <MusicProvider>
+      <NavigationContainer >
+          <MyStack />
+      </NavigationContainer>
+    </MusicProvider>
   );
 }
 

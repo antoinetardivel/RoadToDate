@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TouchableHighlight, Image, ImageBackground } fr
 const imageBG = require("../img/backgroundOpti.jpg");
 import SettingsButton from "../components/SettingsButton";
 
+
 export interface Props {
   navigation: any;
 }
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textTransform: "uppercase",
     fontWeight: "bold",
+    fontFamily: 'GothamBold',
   },
   BackgroundImage:{
     resizeMode: "cover",
