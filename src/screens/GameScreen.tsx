@@ -41,8 +41,8 @@ const GameScreen = ({navigation}: Props) => {
     PosTemp = (windowWidth/2) + ((windowWidth*( parseFloat(y).toFixed( 2 )) )-25)
     if (PosTemp < 0){
       PosTemp = 0
-    }else if (PosTemp > (windowWidth - 50)){
-      PosTemp = (windowWidth-50)
+    }else if (PosTemp > (windowWidth - 40)){
+      PosTemp = (windowWidth-40)
     }else{
       // @ts-ignore
       PosTemp = (windowWidth/2) + ((windowWidth*( parseFloat(y).toFixed( 2 )) )-25)
@@ -58,7 +58,7 @@ const GameScreen = ({navigation}: Props) => {
   const [VagueEnd, setVagueEnd] = useState(true)
   const [Wastes, setWastes] = useState([])
   
-  let max = windowWidth - 15
+  let max = windowWidth - 30
   let min = 0
 
   const RemoveWaste = () => {
@@ -69,7 +69,7 @@ const GameScreen = ({navigation}: Props) => {
   const AddWaste = useCallback(
     () => {
       let PosX = Math.floor(Math.random() * (max - min + 1) + min)
-      let mxBtom = windowHeight-(30 + 15)
+      let mxBtom = windowHeight-(30 + 30)
       let newWaste = { key:Date.now(), PositionX:PosX, MaxBottom:mxBtom}
       // @ts-ignore
       // setWastes([...Wastes, newWaste])

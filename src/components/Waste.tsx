@@ -14,10 +14,10 @@ const Waste = ({PositionX, MaxBottom, windowHeight}: Props) => {
     const { PlayerPosition, setPlayerPosition, PlayerLife, setPlayerLife, PlayerScore, setPlayerScore} = React.useContext(AppContext) as any;
 
     useEffect(() =>{
-        if((PosWaste + 15) >= (windowHeight - 80)){
+        if((PosWaste + 30) >= (windowHeight - 152)){
             
-            if((PositionX + 15)>= PlayerPosition){
-                if(PositionX <= (PlayerPosition + 50)){
+            if((PositionX + 30)>= PlayerPosition){
+                if(PositionX <= (PlayerPosition + 40)){
                     if(GoDown){
                         console.log("touche")
                         setGoDown(false)
@@ -33,10 +33,10 @@ const Waste = ({PositionX, MaxBottom, windowHeight}: Props) => {
             // console.log(PosWaste)
             if(PosWaste >= MaxBottom){
                 setGoDown(false)
-                setPlayerScore(PlayerScore + 50)
+                setPlayerScore(PlayerScore + 10)
             }
             setTimeout(() => {
-            setPosWaste(PosWaste + 1)
+            setPosWaste(PosWaste + 10)
             }, 30)
         }
         
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
     Body: {
         position: 'absolute',
         backgroundColor: 'blue',
-        width: 15,
-        height: 15,
+        width: 30,
+        height: 30,
       }
 })
 
