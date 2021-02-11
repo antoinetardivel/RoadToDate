@@ -16,8 +16,6 @@ import AppContext from  './src/components/AppContext'
 
 const Stack = createStackNavigator();
 
-
-
   function MyStack() {
 
     const [loaded, error] = useFonts({
@@ -36,6 +34,7 @@ const Stack = createStackNavigator();
 
 export default function App() {
   const [PlayMusic, setPlayMusic] = useState(false)
+  const [PlayerPosition, setPlayerPosition] = useState(0)
 
   useEffect(() => {
     if(PlayMusic){
@@ -49,7 +48,9 @@ export default function App() {
   return (
     <AppContext.Provider value={{
       PlayMusic: PlayMusic,
-      setPlayMusic: setPlayMusic
+      setPlayMusic: setPlayMusic,
+      PlayerPosition: PlayerPosition,
+      setPlayerPosition: setPlayerPosition,
     }}>
       <NavigationContainer >
           <MyStack />

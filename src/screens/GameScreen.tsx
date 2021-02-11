@@ -5,6 +5,7 @@ import { Accelerometer } from 'expo-sensors';
 const imageBG = require("../img/backgroundOpti.jpg");
 
 import Waste from '../components/Waste'
+import AppContext from '../components/AppContext';
 
 const GameScreen = () => {
 
@@ -84,6 +85,12 @@ const GameScreen = () => {
       }, 2000)
     }
   },[AddWaste])
+
+  const { PlayerPosition, setPlayerPosition } = React.useContext(AppContext) as any;
+
+  useEffect(()=>{
+    setPlayerPosition(y)
+  },[y])
 
   return (
     <ImageBackground source={imageBG} style={styles.BackgroundImage}>
