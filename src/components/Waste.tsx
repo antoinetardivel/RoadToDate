@@ -3,18 +3,26 @@ import { Button, View, StyleSheet } from 'react-native';
 
 export interface Props {
     PositionX: number;
+    MaxBottom: number;
 }
 
-const Waste = ({PositionX}: Props) => {
+const Waste = ({PositionX, MaxBottom}: Props) => {
 
-    const [PosWaste, setPosWaste] = useState((10))
+    const [PosWaste, setPosWaste] = useState(10)
+    const [GoDown, setGoDown] = useState(true)
     
 
     useEffect(()=>{
-        console.log(PosWaste)
-        setTimeout(() => {
-        setPosWaste(PosWaste + 1)
-        }, 30)
+        if(GoDown){
+            // console.log(PosWaste)
+            if(PosWaste >= MaxBottom){
+                setGoDown(false)
+            }
+            setTimeout(() => {
+            setPosWaste(PosWaste + 1)
+            }, 30)
+        }
+        
       },[PosWaste])
 
     return(

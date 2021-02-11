@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View, Dimensions, ImageBackground  } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ImageBackground, TouchableHighlight  } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
 const imageBG = require("../img/backgroundOpti.jpg");
@@ -27,12 +27,14 @@ const GameScreen = () => {
   const [PosPlayerY, setPosPlayerY] = useState((windowWidth/2)-25)
   let PosTemp = 0
   useEffect(()=>{
+    // @ts-ignore
     PosTemp = (windowWidth/2) + ((windowWidth*( parseFloat(y).toFixed( 2 )) )-25)
     if (PosTemp < 0){
       PosTemp = 0
     }else if (PosTemp > (windowWidth - 50)){
       PosTemp = (windowWidth-50)
     }else{
+      // @ts-ignore
       PosTemp = (windowWidth/2) + ((windowWidth*( parseFloat(y).toFixed( 2 )) )-25)
     }
     setPosPlayerY(PosTemp)
@@ -43,6 +45,7 @@ const GameScreen = () => {
   const [VagueNum, setVagueNum] = useState(1)
   const [VagueStart, setVagueStart] = useState(false)
   const [VagueEnd, setVagueEnd] = useState(true)
+  const [Wastes, setWastes] = useState([])
   useEffect(()=>{
     if(!GameStart){
       setTimeout(() => {
@@ -51,20 +54,25 @@ const GameScreen = () => {
       }, 2000)
     }
   },[])
-  // @ts-ignore
-  const Wastes = [10,50,100,150,200,250,300];
-
-  const spawn = () =>{
-    let max = windowWidth - 15
-    let min = 0
-    let WastePos = Math.floor(Math.random() * (max - min + 1) + min);
-    return(
-      <Waste PositionX={WastePos} />
-    )
+  let max = windowWidth - 15
+  let min = 0
+  const Spawn = () => {
+    return <Waste key={Date.now()} PositionX={Math.floor(Math.random() * (max - min + 1) + min)} MaxBottom={windowHeight-(30 + 15)} />
   }
-  // let max = windowWidth - 15
-  //   let min = 0
-  //   let WastePos = Math.floor(Math.random() * (max - min + 1) + min);
+  const RemoveWaste = () => {
+    Wastes.pop()
+    console.log(Wastes)
+  }
+  const AddWaste = () => {
+    let PosX = Math.floor(Math.random() * (max - min + 1) + min)
+    let mxBtom = windowHeight-(30 + 15)
+    let newWaste = { key:Date.now(), PositionX:PosX, MaxBottom:mxBtom}
+    // @ts-ignore
+    setWastes([...Wastes, newWaste])
+    console.log(Wastes)
+    console.log("new waste: " + PosX + " -- " + mxBtom)
+  }
+
 
   
 
@@ -73,9 +81,17 @@ const GameScreen = () => {
       <View style={styles.Container}>
         <View style={[styles.Perso, {left: PosPlayerY}]}></View>
         <Text>{ parseFloat(y).toFixed( 2 )} </Text>
-        {Wastes.map((WastePos, index) => {
-            return <Waste key={index} PositionX={WastePos} />
-        })}
+        <TouchableHighlight
+          onPress={() => AddWaste()}
+        >
+          <Text>Spawn</Text>
+        </TouchableHighlight>
+        {
+          // @ts-ignore
+          Wastes.map((WasteItem, index) => {
+            return <Waste key={index} PositionX={WasteItem.PositionX} MaxBottom={WasteItem.MaxBottom} />
+          })
+        }
         <Text>-- {windowWidth} </Text>
         <Text>-- {windowHeight} </Text>
       </View>

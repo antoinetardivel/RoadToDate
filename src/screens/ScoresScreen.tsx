@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Text, View, StyleSheet, Image, ImageBackground } from "react-native";
-import BackgroundImage from "../components/BackgroundImage";
 import MainMenuButton from "../components/MainMenuButton";
 import PlayButton from "../components/PlayButton";
 import SettingsButton from "../components/SettingsButton";
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
     borderColor: "#8F2F30",
     borderWidth: 2,
     backgroundColor: "#F2D7AA",
-    marginBottom: 20
+    marginBottom: 20,
   },
   title: {
     alignItems: "center",

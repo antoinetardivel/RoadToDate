@@ -2,7 +2,6 @@ import * as React from "react";
 import { View, Text, StyleSheet, TouchableHighlight, Image, ImageBackground } from "react-native";
 // import BackgroundImage from "../components/BackgroundImage";
 const imageBG = require("../img/backgroundOpti.jpg");
-import BackgroundImage from "../components/BackgroundImage";
 import SettingsButton from "../components/SettingsButton";
 
 export interface Props {
@@ -13,7 +12,6 @@ export default function HomeScreen({ navigation }: Props) {
   return (
     <ImageBackground source={imageBG} blurRadius={2} style={styles.BackgroundImage}>
     <View style={styles.container}>
-      <BackgroundImage />
       <SettingsButton navigation={navigation} />
       <Image style={styles.title} source={require("../img/titre.png")} />
       <View style={styles.contentCenter}>
