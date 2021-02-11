@@ -3,15 +3,16 @@ import { StyleSheet, Text, TouchableHighlight } from "react-native";
 
 export interface Props {
   navigation: any;
+  texte: string;
 }
 
-const PlayButton = ({ navigation }: Props) => {
+const Button = ({ navigation, texte }: Props) => {
   return (
     <TouchableHighlight
       onPress={() => navigation.navigate("Game")}
       style={styles.playbox}
     >
-      <Text style={styles.playtext}>RE/JOUER</Text>
+      <Text style={styles.playtext}>{texte}</Text>
     </TouchableHighlight>
   );
 };
@@ -34,4 +35,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PlayButton;
+export default Button;

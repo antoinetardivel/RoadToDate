@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, View, StyleSheet, Image, ImageBackground } from "react-native";
 import MainMenuButton from "../components/MainMenuButton";
-import PlayButton from "../components/PlayButton";
+import PlayButton from "../components/Button";
 import SettingsButton from "../components/SettingsButton";
 const imageBG = require("../img/backgroundOpti.jpg");
 

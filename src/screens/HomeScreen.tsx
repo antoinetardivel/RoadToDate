@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableHighlight, Image, ImageBackground } fr
 // import BackgroundImage from "../components/BackgroundImage";
 const imageBG = require("../img/backgroundOpti.jpg");
 import SettingsButton from "../components/SettingsButton";
+import Button from "../components/Button";
 
 export interface Props {
   navigation: any;
@@ -15,11 +16,7 @@ export default function HomeScreen({ navigation }: Props) {
       <SettingsButton navigation={navigation} />
       <Image style={styles.title} source={require("../img/titre.png")} />
       <View style={styles.contentCenter}>
-        <TouchableHighlight onPress={() => navigation.navigate("Game")}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Jouer</Text>
-          </View>
-        </TouchableHighlight>
+        <Button navigation={navigation} texte={"Jouer"} />
         <TouchableHighlight onPress={() => navigation.navigate("Scores")}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Scores</Text>
