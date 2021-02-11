@@ -8,7 +8,6 @@ import HomeScreen from './src/screens/HomeScreen';
 import ScoresScreen from './src/screens/ScoresScreen';
 import GameScreen from './src/screens/GameScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
-import MusicProvider from './src/components/MusicProvider';
 
 const Stack = createStackNavigator();
 
@@ -36,11 +35,9 @@ function MyStack() {
 
 export default function App() {
   return (
-    <MusicProvider>
       <NavigationContainer >
           <MyStack />
       </NavigationContainer>
-    </MusicProvider>
   );
 }
 
