@@ -35,6 +35,9 @@ const Stack = createStackNavigator();
 export default function App() {
   const [PlayMusic, setPlayMusic] = useState(false)
   const [PlayerPosition, setPlayerPosition] = useState(0)
+  const [PlayerLife, setPlayerLife] = useState(3)
+  const [PlayerScore, setPlayerScore] = useState(0)
+  const [Start, setStart] = useState(false)
 
   useEffect(() => {
     if(PlayMusic){
@@ -51,6 +54,12 @@ export default function App() {
       setPlayMusic: setPlayMusic,
       PlayerPosition: PlayerPosition,
       setPlayerPosition: setPlayerPosition,
+      PlayerLife: PlayerLife,
+      setPlayerLife: setPlayerLife,
+      PlayerScore: PlayerScore,
+      setPlayerScore: setPlayerScore,
+      Start: Start,
+      setStart: setStart,
     }}>
       <NavigationContainer >
           <MyStack />

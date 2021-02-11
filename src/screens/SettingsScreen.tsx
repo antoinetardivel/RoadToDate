@@ -9,7 +9,7 @@ import {
   TouchableHighlight,
 } from "react-native";
 import MainMenuButton from "../components/MainMenuButton";
-const imageBG = require("../img/backgroundOpti.jpg");
+const imageBG = require("../../assets/images/backgroundOpti.jpg");
 
 export interface Props {
   navigation: any;
@@ -29,7 +29,7 @@ const SettingsScreen = ({ navigation }: Props) => {
           style={styles.closesettingsbox}
         >
           <Image
-            source={require("../img/cross.png")}
+            source={require("../../assets/images/cross.png")}
             style={styles.closesettingsimage}
           ></Image>
         </TouchableHighlight>
@@ -41,7 +41,7 @@ const SettingsScreen = ({ navigation }: Props) => {
             <View>
               <Text style={styles.titres}>Commandes :</Text>
               <View style={{ flex: 1, flexDirection: "row" }}>
-                <Image source={require("../img/commandes.png")} />
+                <Image source={require("../../assets/images/commandes.png")} />
                 <Text style={styles.textes}>
                   Inclinez le téléphone pour vous déplacer.
                 </Text>

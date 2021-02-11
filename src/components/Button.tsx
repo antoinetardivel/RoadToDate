@@ -1,15 +1,23 @@
 import * as React from "react";
 import { StyleSheet, Text, TouchableHighlight } from "react-native";
 
+import AppContext from '../components/AppContext';
+
 export interface Props {
   navigation: any;
   texte: string;
 }
 
 const Button = ({ navigation, texte }: Props) => {
+  const { setPlayerScore, setPlayerLife, setStart } = React.useContext(AppContext) as any;
   return (
     <TouchableHighlight
-      onPress={() => navigation.navigate("Game")}
+      onPress={() => {
+        navigation.navigate("Game")
+        setPlayerScore(0)
+        setPlayerLife(3)
+        setStart(true)
+    }}
       style={styles.playbox}
     >
       <Text style={styles.playtext}>{texte}</Text>
@@ -21,17 +29,20 @@ const styles = StyleSheet.create({
   playbox: {
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
-    borderRadius: 14,
-    borderStyle: "solid",
-    borderColor: "#682B16",
-    borderWidth: 2,
+    width: 260,
     backgroundColor: "#8F2F30",
+    borderWidth: 4,
+    borderColor: "#692C17",
+    borderRadius: 10,
+    padding: 10,
+    margin: 10,
   },
   playtext: {
+    textAlign: "center",
     color: "#FEE6C0",
-    fontWeight: "bold",
     fontSize: 24,
+    textTransform: "uppercase",
+    fontWeight: "bold",
   },
 });
 

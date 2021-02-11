@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet, TouchableHighlight, View,Text } from "react-native";
+import { StyleSheet, TouchableHighlight, Text } from "react-native";
 import AppContext from './AppContext';
 
 interface Props {
@@ -16,7 +16,7 @@ const MusicToggle = ({}: Props) => {
         onPress={() => handleClick()}
         style={styles.ToggleMusic}
         >
-            <Text>coucou</Text>
+            <Text>Coucou</Text>
         </TouchableHighlight>
     );
 }

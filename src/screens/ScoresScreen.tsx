@@ -3,28 +3,33 @@ import { Text, View, StyleSheet, Image, ImageBackground } from "react-native";
 import MainMenuButton from "../components/MainMenuButton";
 import PlayButton from "../components/Button";
 import SettingsButton from "../components/SettingsButton";
-const imageBG = require("../img/backgroundOpti.jpg");
+const imageBG = require("../../assets/images/backgroundOpti.jpg");
+
+import AppContext from '../components/AppContext';
 
 export interface Props {
   navigation: any;
 }
 
 const ScoresScreen = ({ navigation }: Props) => {
+  const { PlayerScore, setPlayerScore } = React.useContext(AppContext) as any;
   return (
     <ImageBackground source={imageBG} blurRadius={2} style={styles.BackgroundImage}>
       <View style={styles.container}>
-        <MainMenuButton navigation={navigation} />
         <SettingsButton navigation={navigation} />
         <View style={[styles.container, { width: "80%" }]}>
-          <Image style={styles.title} source={require("../img/results.png")} />
+          <Image style={styles.title} source={require("../../assets/images/results.png")} />
           <View>
             <View style={styles.scorebox}>
-              <Text style={styles.score}>350 pts</Text>
-              <Text style={styles.bestscore}>Meilleur score : 354 pts</Text>
+            <Text style={styles.score}>Score:</Text>
+              <Text style={styles.score}>{PlayerScore} pts</Text>
+              {/* <Text style={styles.bestscore}>Meilleur score : {PlayerScore} pts</Text> */}
             </View>
+            {/* setPlayerScore */}
             <PlayButton navigation={navigation}  texte={"Rejouer"} />
           </View>
         </View>
+        <MainMenuButton navigation={navigation} />
       </View>
     </ImageBackground>
   );
@@ -49,6 +54,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: "#F2D7AA",
     marginBottom: 20,
+    minWidth:300,
   },
   title: {
     alignItems: "center",

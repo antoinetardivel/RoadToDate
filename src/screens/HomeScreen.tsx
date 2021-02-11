@@ -2,10 +2,11 @@ import * as React from "react";
 import { useContext } from "react";
 import { View, Text, StyleSheet, TouchableHighlight, Image, ImageBackground } from "react-native";
 // import BackgroundImage from "../components/BackgroundImage";
-const imageBG = require("../img/backgroundOpti.jpg");
+const imageBG = require("../../assets/images/backgroundOpti.jpg");
 import SettingsButton from "../components/SettingsButton";
 import MusicToggle from '../components/MusicToggle';
 import Button from "../components/Button";
+import PlayButton from "../components/Button"
 
 export interface Props {
   navigation: any;
@@ -16,12 +17,9 @@ export default function HomeScreen({ navigation }: Props) {
     <ImageBackground source={imageBG} blurRadius={2} style={styles.BackgroundImage}>
     <View style={styles.container}>
       <SettingsButton navigation={navigation} />
-      <Image style={styles.title} source={require("../img/titre.png")} />
-      <View>
-        <MusicToggle />
-      </View>
+      <Image style={styles.title} source={require("../../assets/images/titre.png")} />
       <View style={styles.contentCenter}>
-        <Button navigation={navigation} texte={"Jouer"} />
+        <PlayButton navigation={navigation}  texte={"Jouer"} />
         <TouchableHighlight onPress={() => navigation.navigate("Scores")}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Scores</Text>

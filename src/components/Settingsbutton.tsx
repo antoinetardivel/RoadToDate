@@ -13,7 +13,7 @@ const SettingsButton = ({ navigation }: Props) => {
       style={styles.settingsbox}
     >
       <Image
-        source={require("../img/settings.png")}
+        source={require("../../assets/images/settings.png")}
         style={styles.settingsimage}
       ></Image>
     </TouchableHighlight>
