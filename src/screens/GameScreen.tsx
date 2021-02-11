@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { StyleSheet, Text, View, Dimensions, ImageBackground, TouchableHighlight  } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
@@ -46,40 +46,50 @@ const GameScreen = () => {
   const [VagueStart, setVagueStart] = useState(false)
   const [VagueEnd, setVagueEnd] = useState(true)
   const [Wastes, setWastes] = useState([])
-  useEffect(()=>{
-    if(!GameStart){
-      setTimeout(() => {
-        console.log("start")
-        setGameStart(true)
-      }, 2000)
-    }
-  },[])
+  
   let max = windowWidth - 15
   let min = 0
-  const Spawn = () => {
-    return <Waste key={Date.now()} PositionX={Math.floor(Math.random() * (max - min + 1) + min)} MaxBottom={windowHeight-(30 + 15)} />
-  }
+
   const RemoveWaste = () => {
     Wastes.pop()
     console.log(Wastes)
   }
-  const AddWaste = () => {
-    let PosX = Math.floor(Math.random() * (max - min + 1) + min)
-    let mxBtom = windowHeight-(30 + 15)
-    let newWaste = { key:Date.now(), PositionX:PosX, MaxBottom:mxBtom}
-    // @ts-ignore
-    setWastes([...Wastes, newWaste])
-    console.log(Wastes)
-    console.log("new waste: " + PosX + " -- " + mxBtom)
-  }
 
+  const AddWaste = useCallback(
+    () => {
+      let PosX = Math.floor(Math.random() * (max - min + 1) + min)
+      let mxBtom = windowHeight-(30 + 15)
+      let newWaste = { key:Date.now(), PositionX:PosX, MaxBottom:mxBtom}
+      // @ts-ignore
+      // setWastes([...Wastes, newWaste])
+      setWastes((wastes) => {
+        return [...wastes, newWaste]
+      })
+      console.log(Wastes)
+      console.log("new waste: " + PosX + " -- " + mxBtom)
+    },
+    [],
+  );
 
-  
+  useEffect(()=>{
+    if(!GameStart){
+      setTimeout(() => {
+          for(let i = 0; i < 4; i++){
+            console.log("add")
+            setTimeout(() => {
+              AddWaste()
+            }, 1000 * i)
+          }
+        setGameStart(true)
+      }, 2000)
+    }
+  },[AddWaste])
 
   return (
     <ImageBackground source={imageBG} style={styles.BackgroundImage}>
       <View style={styles.Container}>
         <View style={[styles.Perso, {left: PosPlayerY}]}></View>
+        {/*@ts-ignore*/}
         <Text>{ parseFloat(y).toFixed( 2 )} </Text>
         <TouchableHighlight
           onPress={() => AddWaste()}
@@ -87,8 +97,9 @@ const GameScreen = () => {
           <Text>Spawn</Text>
         </TouchableHighlight>
         {
-          // @ts-ignore
+
           Wastes.map((WasteItem, index) => {
+            // @ts-ignore
             return <Waste key={index} PositionX={WasteItem.PositionX} MaxBottom={WasteItem.MaxBottom} />
           })
         }
