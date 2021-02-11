@@ -1,8 +1,10 @@
 import * as React from "react";
+import { useContext } from "react";
 import { View, Text, StyleSheet, TouchableHighlight, Image, ImageBackground } from "react-native";
 // import BackgroundImage from "../components/BackgroundImage";
 const imageBG = require("../img/backgroundOpti.jpg");
 import SettingsButton from "../components/SettingsButton";
+import MusicToggle from '../components/MusicToggle';
 
 
 export interface Props {
@@ -15,6 +17,9 @@ export default function HomeScreen({ navigation }: Props) {
     <View style={styles.container}>
       <SettingsButton navigation={navigation} />
       <Image style={styles.title} source={require("../img/titre.png")} />
+      <View>
+        <MusicToggle />
+      </View>
       <View style={styles.contentCenter}>
         <TouchableHighlight onPress={() => navigation.navigate("Game")}>
           <View style={styles.button}>
