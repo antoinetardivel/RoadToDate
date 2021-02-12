@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 interface AppContextProps {
-    PlayMusic: boolean,
-    setPlayMusic: React.Dispatch<React.SetStateAction<boolean>>,
+    PlayMusic: any,
+    setPlayMusic: React.Dispatch<React.SetStateAction<any>>,
     PlayerPosition: number,
     setPlayerPosition: React.Dispatch<React.SetStateAction<number>>,
     PlayerLife: number,
@@ -14,7 +14,7 @@ interface AppContextProps {
 }
 
 const AppContext = createContext({
-    PlayMusic: false,
+    PlayMusic: 0,
     setPlayMusic: () => {},
     PlayerPosition: 0,
     setPlayerPosition: () => {},
