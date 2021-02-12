@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native'
+import { Audio } from 'expo-av';
 // import { useFonts } from 'expo-font';
 
 import HomeScreen from './src/screens/HomeScreen';
@@ -43,6 +44,16 @@ export default function App() {
   useEffect(() => {
     if(PlayMusic){
       // Si state PlayMusic = true
+      async function playSound() {
+        console.log('Loading Sound');
+        const { sound } = await Audio.Sound.createAsync(
+           require('./assets/Hello.mp3')
+        );
+        setSound(sound);
+    
+        console.log('Playing Sound');
+        await sound.playAsync(); }
+        
     }else{
       // Si state PlayMusic = false
     }
