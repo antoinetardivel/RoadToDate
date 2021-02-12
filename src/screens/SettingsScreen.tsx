@@ -9,6 +9,7 @@ import {
   TouchableHighlight,
 } from "react-native";
 import MainMenuButton from "../components/MainMenuButton";
+import MusicToggle from "../components/MusicToggle";
 const imageBG = require("../../assets/images/backgroundOpti.jpg");
 
 export interface Props {
@@ -34,13 +35,14 @@ const SettingsScreen = ({ navigation }: Props) => {
           ></Image>
         </TouchableHighlight>
         <View style={[styles.box]}>
-          <View style={{ flex: 1, flexDirection: "row" }}>
-            <View>
+          <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-between", top: 20}}>
+            <View style={{ flex: 1, left: 45}}>
               <Text style={styles.titres}>Son :</Text>
+              <MusicToggle/>
             </View>
             <View>
               <Text style={styles.titres}>Commandes :</Text>
-              <View style={{ flex: 1, flexDirection: "row" }}>
+              <View style={{ flex: 1, flexDirection: "row", top: 20 }}>
                 <Image source={require("../../assets/images/commandes.png")} />
                 <Text style={styles.textes}>
                   Inclinez le téléphone pour vous déplacer.
@@ -48,7 +50,7 @@ const SettingsScreen = ({ navigation }: Props) => {
               </View>
             </View>
           </View>
-          <View>
+          <View style={{ flex: 1, top: 30}}>
             <Text style={styles.titres}>Crédits :</Text>
             <Text style={styles.textes}>
               Application réalisée par Antoine TARDIVEL, Olivier TECHER et Hugo
