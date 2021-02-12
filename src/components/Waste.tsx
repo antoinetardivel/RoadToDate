@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { Button, View, StyleSheet } from 'react-native';
+import { Button, View, StyleSheet, Image } from 'react-native';
 import AppContext from './AppContext';
+const PigeonShit = require("../../assets/images/PigeonShit.png");
 
 export interface Props {
     PositionX: number,
@@ -33,7 +34,9 @@ const Waste = ({PositionX, MaxBottom, windowHeight}: Props) => {
             // console.log(PosWaste)
             if(PosWaste >= MaxBottom){
                 setGoDown(false)
-                setPlayerScore(PlayerScore + 10)
+                if(PlayerLife > 0){
+                    setPlayerScore(PlayerScore + 10)
+                }
             }
             setTimeout(() => {
             setPosWaste(PosWaste + 10)
@@ -45,7 +48,10 @@ const Waste = ({PositionX, MaxBottom, windowHeight}: Props) => {
     return(
         <>
             { GoDown &&
-                <View style={[styles.Body, {top: PosWaste, left:PositionX}]}></View>
+                <View style={[styles.Body, {top: PosWaste, left:PositionX}]}>
+                    <Image style={styles.Shit} source={PigeonShit} />
+                </View>
+                
             }
         </>
     )
@@ -54,10 +60,13 @@ const Waste = ({PositionX, MaxBottom, windowHeight}: Props) => {
 const styles = StyleSheet.create({
     Body: {
         position: 'absolute',
-        backgroundColor: 'blue',
         width: 30,
         height: 30,
-      }
+    },
+    shit: {
+        width:'100%',
+        height: '100%'
+    }
 })
 
 export default Waste
