@@ -49,7 +49,7 @@ const Waste = ({PositionX, MaxBottom, windowHeight}: Props) => {
         <>
             { GoDown &&
                 <View style={[styles.Body, {top: PosWaste, left:PositionX}]}>
-                    <Image style={styles.Shit} source={PigeonShit} />
+                    <Image style={styles.shit} source={PigeonShit} />
                 </View>
                 
             }

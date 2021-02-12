@@ -40,19 +40,29 @@ export default function App() {
   const [PlayerScore, setPlayerScore] = useState(0)
   const [Start, setStart] = useState(false)
   const [VagueNum, setVagueNum] = useState(1)
+  const [sound, setSound] = React.useState();
+
+  async function playSound() {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync(
+       require('./src/music/RoadToDate.mp3')
+    );
+    setSound(sound);
+
+    console.log('Playing Sound');
+    await sound.playAsync();
+  }
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          console.log('Unloading Sound');
+          sound.unloadAsync(); }
+      : undefined;
+  }, [sound]);
 
   useEffect(() => {
     if(PlayMusic){
       // Si state PlayMusic = true
-      async function playSound() {
-        console.log('Loading Sound');
-        const { sound } = await Audio.Sound.createAsync(
-           require('./assets/Hello.mp3')
-        );
-        setSound(sound);
-    
-        console.log('Playing Sound');
-        await sound.playAsync(); }
         
     }else{
       // Si state PlayMusic = false
