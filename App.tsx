@@ -42,33 +42,33 @@ export default function App() {
   const [VagueNum, setVagueNum] = useState(1)
   const [sound, setSound] = React.useState();
 
-  async function playSound() {
-    console.log('Loading Sound');
-    const { sound } = await Audio.Sound.createAsync(
-       require('./src/music/RoadToDate.mp3')
-    );
-    setSound(sound);
+  // async function playSound() {
+  //   console.log('Loading Sound');
+  //   const { sound } = await Audio.Sound.createAsync(
+  //      require('./src/music/RoadToDate.mp3')
+  //   );
+  //   setSound(sound);
 
-    console.log('Playing Sound');
-    await sound.playAsync();
-  }
-  React.useEffect(() => {
-    return sound
-      ? () => {
-          console.log('Unloading Sound');
-          sound.unloadAsync(); }
-      : undefined;
-  }, [sound]);
+  //   console.log('Playing Sound');
+  //   await sound.playAsync();
+  // }
+  // React.useEffect(() => {
+  //   return sound
+  //     ? () => {
+  //         console.log('Unloading Sound');
+  //         sound.unloadAsync(); }
+  //     : undefined;
+  // }, [sound]);
 
-  useEffect(() => {
-    if(PlayMusic){
-      // Si state PlayMusic = true
+  // useEffect(() => {
+  //   if(PlayMusic){
+  //     // Si state PlayMusic = true
         
-    }else{
-      // Si state PlayMusic = false
-    }
+  //   }else{
+  //     // Si state PlayMusic = false
+  //   }
 
-  },[PlayMusic])
+  // },[PlayMusic])
 
   return (
     <AppContext.Provider value={{
