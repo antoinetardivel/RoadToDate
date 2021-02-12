@@ -20,11 +20,6 @@ export default function HomeScreen({ navigation }: Props) {
       <Image style={styles.title} source={require("../../assets/images/titre.png")} />
       <View style={styles.contentCenter}>
         <PlayButton navigation={navigation}  texte={"Jouer"} />
-        <TouchableHighlight onPress={() => navigation.navigate("Scores")}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Scores</Text>
-          </View>
-        </TouchableHighlight>
       </View>
     </View>
     </ImageBackground>
