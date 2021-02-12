@@ -21,12 +21,12 @@ const ScoresScreen = ({ navigation }: Props) => {
           <Image style={styles.title} source={require("../../assets/images/results.png")} />
           <View>
             <View style={styles.scorebox}>
-            <Text style={styles.score}>Score:</Text>
-              <Text style={styles.score}>{PlayerScore} pts</Text>
-              {/* <Text style={styles.bestscore}>Meilleur score : {PlayerScore} pts</Text> */}
-            </View>
+              <Text style={styles.score}>Score:</Text>
+                <Text style={styles.score}>{PlayerScore} pts</Text>
+                {/* <Text style={styles.bestscore}>Meilleur score : {PlayerScore} pts</Text> */}
+              </View>
             {/* setPlayerScore */}
-            <PlayButton navigation={navigation}  texte={"Rejouer"} />
+              <PlayButton navigation={navigation}  texte={"Rejouer"} />
           </View>
         </View>
         <MainMenuButton navigation={navigation} />

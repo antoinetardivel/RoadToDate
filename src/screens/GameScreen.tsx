@@ -16,7 +16,31 @@ export interface Props {
 
 const GameScreen = ({navigation}: Props) => {
 
-  const { PlayerPosition, setPlayerPosition, PlayerLife, PlayerScore, Start, setStart } = React.useContext(AppContext) as any;
+  const { PlayerPosition, setPlayerPosition, PlayerLife, PlayerScore, Start, setStart, VagueNum, setVagueNum } = React.useContext(AppContext) as any;
+
+  const [Vague, setVague] = useState(false)
+  const [VagueEnd, setVagueEnd] = useState(false)
+
+  useEffect(() => {
+    if(Vague){
+      setTimeout(() => {
+        setVagueNum(VagueNum + 1)
+        console.log('vague + 1')
+      }, 10);
+    }
+  },[Vague])
+
+  useEffect(() => {
+    if(VagueEnd){
+      setVagueEnd(false)
+      if(PlayerLife > 0){
+        setTimeout(() => {
+          console.log("relancer")
+          setStart(true)
+        }, 5000);
+      }
+    }
+  },[VagueEnd])
 
   const [data, setData] = useState({
       x: 0,
@@ -52,10 +76,6 @@ const GameScreen = ({navigation}: Props) => {
   },[y])
 
 
-  const [GameStart, setGameStart] = useState(false)
-  const [VagueNum, setVagueNum] = useState(1)
-  const [VagueStart, setVagueStart] = useState(false)
-  const [VagueEnd, setVagueEnd] = useState(true)
   const [Wastes, setWastes] = useState([])
   
   let max = windowWidth - 30
@@ -63,7 +83,6 @@ const GameScreen = ({navigation}: Props) => {
 
   const RemoveWaste = () => {
     Wastes.pop()
-    console.log(Wastes)
   }
 
   const AddWaste = useCallback(
@@ -76,20 +95,27 @@ const GameScreen = ({navigation}: Props) => {
       setWastes((wastes) => {
         return [...wastes, newWaste]
       })
-      console.log(Wastes)
-      console.log("new waste: " + PosX + " -- " + mxBtom)
+      // console.log(Wastes)
+      // console.log("new waste: " + PosX + " -- " + mxBtom)
     },
     [],
   );
 
   useEffect(()=>{
     if(Start){
+      setStart(false)
+      setVague(true)
       for(let i = 0; i < 10; i++){
-        console.log("add")
+        // console.log("add")
         setTimeout(() => {
           AddWaste()
         }, 1000 * i)
       }
+      // console.log("add")
+      setTimeout(() => {
+        setVague(false)
+        setVagueEnd(true)
+      }, 1000 * 10)
     }
   },[AddWaste, Start])
 
@@ -132,7 +158,7 @@ const GameScreen = ({navigation}: Props) => {
         {/* <Text>-- {windowWidth} </Text>
         <Text>-- {windowHeight} </Text> */}
       </View>
-      <Text style={styles.Score}>{PlayerScorePrint}pts</Text>
+      <Text style={styles.Score}>{PlayerScorePrint}pts - Vague: {VagueNum}</Text>
       <View style={styles.heartRow}>
         { (PlayerLife > 0) ?
           <Image style={styles.heart} source={HeartFill} />

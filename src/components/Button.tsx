@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const Button = ({ navigation, texte }: Props) => {
-  const { setPlayerScore, setPlayerLife, setStart } = React.useContext(AppContext) as any;
+  const { setPlayerScore, setPlayerLife, setStart, setVagueNum } = React.useContext(AppContext) as any;
   return (
     <TouchableHighlight
       onPress={() => {
@@ -17,6 +17,7 @@ const Button = ({ navigation, texte }: Props) => {
         setPlayerScore(0)
         setPlayerLife(3)
         setStart(true)
+        setVagueNum(0)
     }}
       style={styles.playbox}
     >

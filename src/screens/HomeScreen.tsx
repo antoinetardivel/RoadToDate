@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textTransform: "uppercase",
     fontWeight: "bold",
-    fontFamily: 'GothamBold',
   },
   BackgroundImage:{
     resizeMode: "cover",

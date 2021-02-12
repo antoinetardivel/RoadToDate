@@ -11,6 +11,8 @@ interface AppContextProps {
     setPlayerScore: React.Dispatch<React.SetStateAction<number>>,
     Start: boolean,
     setStart: React.Dispatch<React.SetStateAction<boolean>>,
+    VagueNum: number,
+    setVagueNum: React.Dispatch<React.SetStateAction<number>>,
 }
 
 const AppContext = createContext({
@@ -24,6 +26,8 @@ const AppContext = createContext({
     setPlayerScore: () => {},
     Start: false,
     setStart: () => {},
+    VagueNum: 0,
+    setVagueNum: () => {},
 } as AppContextProps);
 
 export default AppContext;
